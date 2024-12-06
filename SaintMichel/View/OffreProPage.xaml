@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="SaintMichel.OffreProPage"
+             xmlns:vm="clr-namespace:SaintMichel.ViewModel">
+
+    <!-- Le BindingContext sera automatiquement défini grâce à DI -->
+    <StackLayout Padding="10">
+
+        <!-- Titre de la page -->
+        <Label Text="Liste des Offres Professionnelles"
+               FontSize="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+        <!-- ListView pour afficher les offres -->
+        <ListView x:Name="OffreProListView"
+                  ItemsSource="{Binding ObsItems}" 
+                  IsPullToRefreshEnabled="True" 
+                  RefreshCommand="{Binding LoadItems}" 
+                  Margin="0,20">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10" ColumnDefinitions="Auto, *, Auto">
+                            <Label Text="{Binding DateStart}" Grid.Column="0" VerticalOptions="Center" BackgroundColor="LightGreen"/>
+                            <Label Text="{Binding DateEnd}" Grid.Column="1" VerticalOptions="Center" BackgroundColor="LightGreen"/>
+                            <Label Text="{Binding NameEntreprise}" Grid.Column="2" VerticalOptions="Center" BackgroundColor="LightGreen"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
